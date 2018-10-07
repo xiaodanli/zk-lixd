@@ -39,3 +39,16 @@ ul li {
     height: 44px;
     border-bottom: 1px solid gray;
 }
+
+.nav-list {
+    position: fixed;
+    top: 50%;
+    right: 10px;
+    transform: translate3d(0, -50%, 0);
+    background: gray;
+    z-index: 999;
+}
+
+.nav-list li {
+    padding: 5px;
+}

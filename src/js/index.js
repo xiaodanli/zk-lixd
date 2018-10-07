@@ -1,5 +1,7 @@
 $(function() {
-    new BScroll('.wrap');
+    var wrap = new BScroll('.wrap', {
+        click: true
+    });
 
     $.ajax({
         url: '../data/data.json',
@@ -57,6 +59,8 @@ $(function() {
 
         var str = '';
 
+        var navStr = '';
+
         arr.forEach(function(item) {
             str += `<li>
                 <h2>${item.title}</h2>
@@ -66,11 +70,20 @@ $(function() {
                 <li>${v.Name}</li>
                 `
             })
-            str += `</ol></li>`
+            str += `</ol></li>`;
+
+            navStr += `<li>${item.title}</li>`;
         });
 
         $('.list').append(str);
+        $('.nav-list').append(navStr);
     }
+
+    $('.nav-list').on('click', 'li', function() {
+        var index = $(this).index();
+        console.log(index);
+        wrap.scrollToElement($('.list>li').eq(index)[0]);
+    })
 
 
     // res.code   //1   登录成功   2.用户不存在   3.密码错误   
